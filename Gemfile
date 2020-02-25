@@ -17,6 +17,9 @@ gem 'webpacker'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary', '~> 1.12.0'
 
+# Authentication
+gem 'devise', '~> 4.7', '>= 4.7.1'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
