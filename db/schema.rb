@@ -10,10 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_013505) do
+ActiveRecord::Schema.define(version: 2020_02_25_050817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.date "date"
+    t.time "start_time"
+    t.time "end_time"
+    t.boolean "status", default: false
+    t.text "user_comment"
+    t.text "provider_comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "skill_id"
+    t.index ["skill_id"], name: "index_bookings_on_skill_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_skills_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +51,20 @@ ActiveRecord::Schema.define(version: 2020_02_25_013505) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "work_histories", force: :cascade do |t|
+    t.string "company_name"
+    t.text "description"
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.string "job_title"
+    t.index ["user_id"], name: "index_work_histories_on_user_id"
+  end
+
+  add_foreign_key "bookings", "skills"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "skills", "users"
+  add_foreign_key "work_histories", "users"
 end
