@@ -14,6 +14,7 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'cloudinary', '~> 1.12.0'
 
 # Authentication
 gem 'devise', '~> 4.7', '>= 4.7.1'
