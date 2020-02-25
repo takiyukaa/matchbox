@@ -1,7 +1,20 @@
  <div class="home-banner">
-  <%= link_to root_path, class: "banner-brand" do %>
-    <h4>MatchBox</h4>
-  <% end %>
+  <div class="banner-brand">
+    <div>
+      <%= link_to root_path do %>
+        <h4>MatchBox</h4>
+      <% end %>
+    </div>
+    <div>
+      <li class="nav-item dropdown" style="list-style-type: none;">
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <%= link_to "Profile", "#", class: "dropdown-item" %>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        </div>
+      </li>
+    </div>
+  </div>
   <div class="banner-text">
     <h2>Find your perfect business match</h2>
     <div class="nav-banner">
@@ -11,4 +24,53 @@
         <% end %>
     </div>
   </div>
+</div>
+<div class="home-container">
+  <h4>Professionals in your city</h4>
+  <!-- you may use for before iterating skills -->
+
+<div class="container">
+  <div class="row">
+
+<!-- you may apply inside iteration for skills -->
+
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card-profile">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <div class="card-profile-infos">
+          <h2>skill.user.first_name</h2>
+          <p>skill.user.work_histrories.last.company_name</p>
+          <p>skill.user.city</p>
+          <p>skill.description</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card-profile">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <div class="card-profile-infos">
+          <h2>skill.user.first_name</h2>
+          <p>skill.user.work_histrories.last.company_name</p>
+          <p>skill.user.city</p>
+          <p>skill.description</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card-profile">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <div class="card-profile-infos">
+          <h2>skill.user.first_name</h2>
+          <p>skill.user.work_histrories.last.company_name</p>
+          <p>skill.user.city</p>
+          <p>skill.description</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 </div>
