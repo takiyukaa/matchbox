@@ -1,0 +1,33 @@
+.card-profile {
+  margin: 18px;
+  height: 300px;
+  width: 300px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+  h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  img {
+    height: 60%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  p {
+    font-size: 12px;
+    opacity: .7;
+    margin: 0;
+  }
+
+  .card-profile-infos {
+    height: 40%;
+    padding: 16px;
+  }
+
+}
+
