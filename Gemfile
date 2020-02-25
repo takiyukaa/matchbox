@@ -15,6 +15,9 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 
+# Authentication
+gem 'devise', '~> 4.7', '>= 4.7.1'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
