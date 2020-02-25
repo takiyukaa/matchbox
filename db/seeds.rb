@@ -2,10 +2,10 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 puts 'Destroying Seeds'
-User.destroy_all
-Skill.destroy_all
-WorkHistory.destroy_all
 Booking.destroy_all
+WorkHistory.destroy_all
+Skill.destroy_all
+User.destroy_all
 
 puts "Creating seeds"
 
@@ -26,7 +26,7 @@ puts "Creating seeds"
     )
 
   WorkHistory.create!(
-    company_name: Faker::Company,
+    company_name: Faker::Company.name,
     description: Faker::Movies::HarryPotter.quote,
     start_date: Date.today,
     end_date: Date.today + rand(1..10),
