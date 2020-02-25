@@ -7,7 +7,7 @@ Skill.destroy_all
 WorkHistory.destroy_all
 Booking.destroy_all
 
-puts "Creating users"
+puts "Creating seeds"
 
 3.times do
   user = User.create!(
@@ -42,31 +42,14 @@ puts "Creating users"
     end_time: start_time + rand(1..2).hours,
     status: ['acepted', 'rejected', 'pending'].sample,
     skill: Skill.all.sample,
-    user: user
+    user: user,
+    user_comment: Faker::TvShows::Simpsons.quote,
+    provider_comment: Faker::TvShows::Simpsons.quote
     )
   end
 end
 
 puts 'finished'
-# 10.times do
-#   .create(Faker::Educator.degree)
-
-
-# Faker::Date.between(2.days.ago, Date.today)
-# Faker::Time.between(DateTime.now - 1, DateTime.now)
-
-
-
-# puts "creating hosts..."
-# 10.times do
-#   url = open('http://le-wagon-tokyo.herokuapp.com/batches/363/student').read
-#   Host.create!(
-#     name: Faker::Name.name,
-#     infected_on: (Date.today - rand(1..10)),
-#     image_url: url,
-#     virus: virus
-#   )
-# end
 
 
 
