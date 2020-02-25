@@ -10,7 +10,7 @@ Booking.destroy_all
 puts "Creating users"
 
 3.times do
-  User.create!(
+  user = User.create!(
     email: Faker::Internet.email,
     password: "123123",
     first_name: Faker::Name.first_name,
@@ -18,24 +18,21 @@ puts "Creating users"
     city: Faker::Address.city,
     bio: Faker::Hipster.paragraphs
     )
-end
 
-3.times do
   Skill.create!(
     name: Faker::Educator.degree,
-    description: Faker::TvShows::TheFreshPrinceOfBelAir.quote
+    description: Faker::TvShows::TheFreshPrinceOfBelAir.quote,
+    user: user
     )
-end
 
-3.times do
   WorkHistory.create!(
     company_name: Faker::Company,
     description: Faker::Movies::HarryPotter.quote,
     start_date: Date.today,
     end_date: Date.today + rand(1..10),
-    job_title: Faker::Job.title
+    job_title: Faker::Job.title,
+    user: user
     )
-end
 
 3.times do
   start_time = Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
@@ -43,9 +40,11 @@ end
     date: Date.today - rand(1..10),
     start_time: start_time,
     end_time: start_time + rand(1..2).hours,
-    job_title: Faker::Job.title,
-    status: ['acepted', 'rejected', 'pending'].sample
+    status: ['acepted', 'rejected', 'pending'].sample,
+    skill: Skill.all.sample,
+    user: user
     )
+  end
 end
 
 puts 'finished'
