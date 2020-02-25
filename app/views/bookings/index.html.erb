@@ -21,6 +21,30 @@
 
   <div class="user-bookings">
     <h2>---My Bookings</h2>
+
+    <h3>My booking as a provider</h3>
+
+    <% @user.skills.each do |skill| %>
+
+      <% skill.bookings.each do |booking| %>
+        <div class="card">
+          <p><%= booking.date %></p>
+          <p><%= booking.start_time %><%= booking.end_time %></p>
+          <p><%= booking.user.first_name %> for <%= booking.skill.name %></p>
+        </div>
+      <% end %>
+
+    <% end %>
+
+    <h3>My booking as a booker</h3>
+
+    <% @user.bookings.each do |booking| %>
+      <div class="card">
+        <p><%= booking.date %></p>
+        <p><%= booking.start_time %><%= booking.end_time %></p>
+        <p><%= booking.skill.user.first_name %> for <%= booking.skill.name %></p>
+      </div>
+    <% end %>
   </div>
 
   <div class="user-history">
