@@ -1,3 +1,4 @@
+require "open-uri"
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -26,6 +27,9 @@ I combined them to develop embedded systems in Asia, to lead software projects a
 I use the best of these values today to help people reach their dream future at Le Wagon Kyoto."
 )
 
+yannfile = URI.open('https://res.cloudinary.com/dopoqpdhm/image/upload/v1582690628/26819547_rc5vof.jpg')
+yann.photo.attach(io: yannfile, filename: '26819547_rc5vof.jpg', content_type: 'image/jpg')
+
 doug = User.create!(
   email: "doug@gmail.com",
   password: "123123",
@@ -34,6 +38,9 @@ doug = User.create!(
   city: "Tokyo",
   bio: "A web developer and director at Le Wagon Japan"
 )
+
+dougfile = URI.open('https://res.cloudinary.com/dopoqpdhm/image/upload/v1582690553/25542223_wgch37.jpg')
+yann.photo.attach(io: dougfile, filename: 'doug.jpg', content_type: 'image/jpg')
 
 css = Skill.create!(
   name: "CSS",
@@ -56,7 +63,7 @@ ruby = Skill.create!(
 WorkHistory.create!(
     company_name: "Le wagon",
     description: "the driver for part-time bootcamp.",
-    start_date: Date.today,
+    start_date: Date.today - rand(100..10000),
     end_date: Date.today + rand(100..10000),
     job_title: "Driver",
     user: yann
@@ -65,7 +72,7 @@ WorkHistory.create!(
 WorkHistory.create!(
   company_name: "Le wagon",
   description: "A web developer and director at Le Wagon Japan",
-  start_date: Date.today,
+  start_date: Date.today - rand(100..10000),
   end_date: Date.today + rand(100..10000),
   job_title: "Driver",
   user: doug
@@ -118,7 +125,7 @@ Booking.create!(
   WorkHistory.create!(
     company_name: Faker::Company.name,
     description: Faker::Movies::HarryPotter.quote,
-    start_date: Date.today,
+    start_date: Date.today - rand(100..10000),
     end_date: Date.today + rand(100..10000),
     job_title: Faker::Job.title,
     user: user
@@ -146,7 +153,7 @@ end
   WorkHistory.create!(
     company_name: Faker::Company.name,
     description: Faker::Movies::HarryPotter.quote,
-    start_date: Date.today,
+    start_date: Date.today - rand(100..10000),
     end_date: Date.today + rand(100..10000),
     job_title: Faker::Job.title,
     user: user
