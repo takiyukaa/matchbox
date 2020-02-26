@@ -9,11 +9,13 @@
           <% @path = 'profile_whubsg' %>
         <% end %>
         <div class="profile-pic">
-          <%= cl_image_tag(@path, cloud_name:'dopoqpdhm') %>
+          <%= cl_image_tag(@path, cloud_name:'dopoqpdhm', radius:"max", height:220, format:"png") %>
         </div>
-        <h3><%= @user.first_name %> <%= @user.second_name %></h3>
-        <p><%= @user.city %></p>
-        <p><%= @user.bio %></p>
+          <div class="user-bio">
+            <h3><%= @user.first_name %> <%= @user.second_name %></h3>
+            <p id="city"><%= @user.city %></p>
+            <p><%= @user.bio %></p>
+          </div>
       </div>
       </div>
       <div class="col-4">
