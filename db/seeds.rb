@@ -26,6 +26,15 @@ I combined them to develop embedded systems in Asia, to lead software projects a
 I use the best of these values today to help people reach their dream future at Le Wagon Kyoto."
 )
 
+doug = User.create!(
+  email: "doug@gmail.com",
+  password: "123123",
+  first_name: "Douglas",
+  second_name: "Berkley",
+  city: "Tokyo",
+  bio: "A web developer and director at Le Wagon Japan"
+)
+
 css = Skill.create!(
   name: "CSS",
   description: "Cool for that",
@@ -38,6 +47,12 @@ java = Skill.create!(
   user: yann
 )
 
+ruby = Skill.create!(
+  name: "Ruby",
+  description: "Flash card is super important",
+  user: doug
+)
+
 WorkHistory.create!(
     company_name: "Le wagon",
     description: "the driver for part-time bootcamp.",
@@ -45,21 +60,6 @@ WorkHistory.create!(
     end_date: Date.today + rand(100..10000),
     job_title: "Driver",
     user: yann
-)
-
-doug = User.create!(
-  email: "doug@gmail.com",
-  password: "123123",
-  first_name: "Douglas",
-  second_name: "Berkley",
-  city: "Tokyo",
-  bio: "A web developer and director at Le Wagon Japan"
-)
-
-ruby = Skill.create!(
-  name: "Ruby",
-  description: "Flash card is super important",
-  user: doug
 )
 
 WorkHistory.create!(
