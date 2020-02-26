@@ -17,6 +17,7 @@ puts "Creating seeds"
     second_name: Faker::Name.last_name,
     city: Faker::Address.city,
     bio: Faker::Hipster.paragraphs
+    photo:
     )
 
   Skill.create!(
@@ -29,7 +30,7 @@ puts "Creating seeds"
     company_name: Faker::Company.name,
     description: Faker::Movies::HarryPotter.quote,
     start_date: Date.today,
-    end_date: Date.today + rand(1..10),
+    end_date: Date.today + rand(1000..10000),
     job_title: Faker::Job.title,
     user: user
     )

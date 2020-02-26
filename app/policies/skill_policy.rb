@@ -8,4 +8,25 @@ class SkillPolicy < ApplicationPolicy
   def create?
     true
   end
+
+   def show?
+    true
+  end
+
+  def edit?
+    user_is_owner_of_record?
+  end
+
+  def update?
+    edit?
+  end
+
+  private
+
+  def user_is_owner_of_record?
+   @record.user == @user
+  end
+
 end
+
+
