@@ -40,7 +40,7 @@ doug = User.create!(
 )
 
 dougfile = URI.open('https://res.cloudinary.com/dopoqpdhm/image/upload/v1582690553/25542223_wgch37.jpg')
-yann.photo.attach(io: dougfile, filename: 'doug.jpg', content_type: 'image/jpg')
+doug.photo.attach(io: dougfile, filename: 'doug.jpg', content_type: 'image/jpg')
 
 css = Skill.create!(
   name: "CSS",
