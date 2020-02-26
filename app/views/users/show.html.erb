@@ -1,45 +1,62 @@
-<div class="container">
-  <div class="user-info">
-    <h2>---Profile</h2>
-
-    <% if @user.photo.attached? %>
-      <% @path = @user.photo.key %>
-    <% else %>
-      <% @path = 'HBnqCUBU2XXNekM4pMAoBegi' %>
-    <% end %>
-
-    <%#= cl_image_tag @path, height: 100, width: 100, crop: :fill %>
-    <h3><%= @user.first_name %> <%= @user.second_name %></h3>
-    <p><%= @user.city %></p>
-    <p><%= @user.bio %></p>
-  </div>
-
-  <div class="user-skills">
-    <h2>---<%= @user.first_name %> <%= @user.second_name %>'s skills</h2>
-      <button class="btn btn-primary">Add a new skill</button>
-      <div class="cards">
-        <% @user.skills.each do |skill| %>
-          <div class="card">
-            <h3><%= skill.name %></h3>
-            <p><%= skill.description %></p>
+<%= render 'shared/navbar' %>
+<div class="main-container">
+  <div class="row">
+    <div class="col-2">
+      <div class="user-info">
+        <% if @user.photo.attached? %>
+          <% @path = @user.photo.key %>
+        <% else %>
+          <% @path = 'profile_whubsg' %>
+        <% end %>
+        <div class="profile-pic">
+          <%= cl_image_tag(@path, cloud_name:'dopoqpdhm', radius:"max", height:220, format:"png") %>
+        </div>
+          <div class="user-bio">
+            <h3><%= @user.first_name %> <%= @user.second_name %></h3>
+            <p id="city"><%= @user.city %></p>
+            <p><%= @user.bio %></p>
           </div>
+      </div>
+      </div>
+      <div class="col-4">
+        <%= link_to new_user_booking do %>
+          <button class="btn btn-primary">Book a Meeting with <%= @user.first_name %> <%= @user.second_name %></button>
+        <% end %>
+      <div class="user-skills">
+        <div class="add-skill">
+          <h4>Skills</h4>
+        </div>
+          <div class="cards">
+            <% @user.skills.each do |skill| %>
+              <div class="card">
+                <h3><%= skill.name %></h3>
+                <p><%= skill.description %></p>
+              </div>
+            <% end %>
+          </div>
+      </div>
+
+  </div>
+  <div class="col-6">
+
+  <h4 class="dash-header">Work History</h4>
+  <div class="user-history">
+
+        <% @user.work_histories.each do |history|  %>
+
+
+          <%= render 'shared/history_card', history: history %>
+          <!-- <div class="card-product">
+            <div class="card-product-infos">
+              <h2><%= history.company_name %></h2>
+              <hr/>
+              <p><strong><%= history.job_title %></strong></p>
+              <p>From <%= history.start_date %>- <%= history.end_date %></p>
+              <p><%= history.description %></p>
+            </div>
+          </div> -->
         <% end %>
       </div>
-  </div>
-
-  <div class="user-history">
-    <h2>---<%= @user.first_name %> <%= @user.second_name %>'s Work History</h2>
-
-    <% @user.work_histories.each do |history|  %>
-      <div class="card-product">
-        <div class="card-product-infos">
-          <h2><%= history.company_name %></h2>
-          <hr/>
-          <p><strong><%= history.job_title %></strong></p>
-          <p>From <%= history.start_date %>- <%= history.end_date %></p>
-          <p><%= history.description %></p>
-        </div>
-      </div>
-   <% end %>
+    </div>
   </div>
 </div>
