@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   resources :skills, only: [:show, :new, :create]
 
+  resources :users, only: [:show]
+
 end
