@@ -81,8 +81,13 @@ end
     start_time: start_time,
     end_time: start_time + rand(1..2).hours,
     status: ['accepted', 'rejected', 'pending'].sample,
+<<<<<<< HEAD
     skill: PSKILLS.sample,
     user: BOOKERS.sample,
+=======
+    skill: Skill.all.sample,
+    user: user,
+>>>>>>> 556a20f0e17782c4269f0e7ef25a6a085dc866b4
     user_comment: Faker::TvShows::Simpsons.quote,
     provider_comment: Faker::TvShows::Simpsons.quote
     )
