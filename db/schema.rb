@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_063508) do
+ActiveRecord::Schema.define(version: 2020_02_26_021042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_02_25_063508) do
     t.date "date"
     t.time "start_time"
     t.time "end_time"
-    t.boolean "status", default: false
+    t.string "status", default: "pending"
     t.text "user_comment"
     t.text "provider_comment"
     t.datetime "created_at", null: false
