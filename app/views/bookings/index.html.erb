@@ -2,24 +2,26 @@
 <div class="main-container">
   <div class="row">
     <div class="col-2">
-      <div class="user-info">
-        <% if @user.photo.attached? %>
-          <% @path = @user.photo.key %>
-        <% else %>
-          <% @path = 'profile_whubsg' %>
-        <% end %>
-        <div class="profile-pic">
-          <%= cl_image_tag(@path, cloud_name:'dopoqpdhm', radius:"max", height:220, format:"png") %>
-        </div>
-          <div class="user-bio">
-            <h3><%= @user.first_name %> <%= @user.second_name %></h3>
-            <p id="city"><%= @user.city %></p>
-            <p><%= @user.bio %></p>
+      <div class="dashboard">
+        <div class="user-info">
+          <% if @user.photo.attached? %>
+            <% @path = @user.photo.key %>
+          <% else %>
+            <% @path = 'profile_whubsg' %>
+          <% end %>
+          <div class="profile-pic">
+            <%= cl_image_tag(@path, cloud_name:'dopoqpdhm', radius:"max", height:220, format:"png") %>
           </div>
+            <div class="user-bio">
+              <h3><%= @user.first_name %> <%= @user.second_name %></h3>
+              <p id="city"><%= @user.city %></p>
+              <p><%= @user.bio %></p>
+            </div>
+        </div>
       </div>
       </div>
       <div class="col-4">
-      <div class="user-skills">
+      <div class="dashboard">
         <div class="add-skill">
           <h4>My skills</h4>
           <%= link_to new_skill_path do %>
@@ -29,7 +31,8 @@
           <div class="cards">
             <% @user.skills.each do |skill| %>
               <div class="card">
-                <h3><%= skill.name %></h3>
+                <h4><%= skill.name %></h4>
+                <hr/>
                 <p><%= skill.description %></p>
               </div>
             <% end %>
@@ -39,8 +42,8 @@
   </div>
   <div class="col-6">
 
-  <h4 class="dash-header">My Bookings</h4>
-  <div class="user-bookings">
+  <div class="dashboard">
+    <h4 class="dash-header">My Bookings</h4>
 
     <p><strong>People have booked me for:</strong></p>
 
@@ -50,8 +53,9 @@
       <% skill.bookings.each do |booking| %>
         <div class="card">
           <p><%= booking.user.first_name %> has booked me for: <%= booking.skill.name %></p>
+          <p> Status: <%= booking.status %></p>
           <p><%= booking.date %></p>
-          <p><%= booking.start_time %><%= booking.end_time %></p>
+<!--           <p><%= booking.start_time %><%= booking.end_time %></p> -->
         </div>
       <% end %>
 
@@ -63,14 +67,15 @@
     <% @user.bookings.each do |booking| %>
       <div class="card">
         <p>I have booked <%= booking.skill.user.first_name %> for: <%= booking.skill.name %></p>
+        <p> Status: <%= booking.status %></p>
         <p><%= booking.date %></p>
-        <p><%= booking.start_time %><%= booking.end_time %></p>
+<!--         <p><%= booking.start_time %><%= booking.end_time %></p> -->
       </div>
     <% end %>
   </div>
 
-  <h4 class="dash-header">My Work History</h4>
-  <div class="user-history">
+  <div class="dashboard">
+    <h4 class="dash-header">My Work History</h4>
 
         <% @user.work_histories.each do |history|  %>
 
