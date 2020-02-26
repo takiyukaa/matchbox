@@ -4,17 +4,22 @@ class SkillsController < ApplicationController
 
   def new
     @skill = Skill.new
+      authorize @skill
   end
 
   def create
     @skill = Skill.new(skill_params)
     @skill.user = current_user
     if @skill.save
-      # redirect_to bookings_path(current_user)
-      redirect_to @skill
+      redirect_to bookings_path
+      authorize @skill
     else
       render :new
     end
+
+    # def show
+    #   authorize @skill
+    # end
   end
 
   private
