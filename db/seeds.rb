@@ -9,6 +9,14 @@ User.destroy_all
 
 puts "Creating seeds"
 
+PROVIDERS = []
+BOOKERS = []
+PSKILLS = []
+
+
+
+
+
 3.times do
   user = User.create!(
     email: Faker::Internet.email,
@@ -18,6 +26,37 @@ puts "Creating seeds"
     city: Faker::Address.city,
     bio: Faker::Hipster.paragraphs
     )
+  PROVIDERS << user
+
+
+  skill = Skill.create!(
+    name: Faker::Educator.degree,
+    description: Faker::TvShows::TheFreshPrinceOfBelAir.quote,
+    user: user
+    )
+  PSKILLS << skill
+
+  WorkHistory.create!(
+    company_name: Faker::Company.name,
+    description: Faker::Movies::HarryPotter.quote,
+    start_date: Date.today,
+    end_date: Date.today + rand(100..10000),
+    job_title: Faker::Job.title,
+    user: user
+    )
+end
+
+3.times do
+  user = User.create!(
+    email: Faker::Internet.email,
+    password: "123123",
+    first_name: Faker::Name.first_name,
+    second_name: Faker::Name.last_name,
+    city: Faker::Address.city,
+    bio: Faker::Hipster.paragraphs
+    )
+  BOOKERS << user
+
 
   Skill.create!(
     name: Faker::Educator.degree,
@@ -29,10 +68,11 @@ puts "Creating seeds"
     company_name: Faker::Company.name,
     description: Faker::Movies::HarryPotter.quote,
     start_date: Date.today,
-    end_date: Date.today + rand(1..10),
+    end_date: Date.today + rand(100..10000),
     job_title: Faker::Job.title,
     user: user
     )
+end
 
 3.times do
   start_time = Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
@@ -40,16 +80,14 @@ puts "Creating seeds"
     date: Date.today - rand(1..10),
     start_time: start_time,
     end_time: start_time + rand(1..2).hours,
-    status: ['acepted', 'rejected', 'pending'].sample,
-    skill: Skill.all.sample,
-    user: user,
+    status: ['accepted', 'rejected', 'pending'].sample,
+    skill: PSKILLS.sample,
+    user: BOOKERS.sample,
     user_comment: Faker::TvShows::Simpsons.quote,
     provider_comment: Faker::TvShows::Simpsons.quote
     )
   end
-end
 
 puts 'finished'
-
 
 
