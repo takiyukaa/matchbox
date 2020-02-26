@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="user-info">
+    <h2>---My Profile</h2>
+
+    <% if @user.photo.attached? %>
+      <% @path = @user.photo.key %>
+    <% else %>
+      <% @path = 'HBnqCUBU2XXNekM4pMAoBegi' %>
+    <% end %>
+
+    <%= cl_image_tag @path, height: 100, width: 100, crop: :fill %>
+    <h3><%= @user.first_name %> <%= @user.second_name %></h3>
+    <p><%= @user.city %></p>
+    <p><%= @user.bio %></p>
+  </div>
+
+  <div class="user-skills">
+    <h2>---My skills</h2>
+      <button class="btn btn-primary">Add a new skill</button>
+      <div class="cards">
+        <% @user.skills.each do |skill| %>
+          <div class="card">
+            <h3><%= skill.name %></h3>
+            <p><%= skill.description %></p>
+          </div>
+        <% end %>
+      </div>
+  </div>
+
+  <div class="user-bookings">
+    <h2>---My Bookings</h2>
+
+    <h3>My booking as a provider</h3>
+
+    <% @user.skills.each do |skill| %>
+
+      <% skill.bookings.each do |booking| %>
+        <div class="card">
+          <p><%= booking.date %></p>
+          <p><%= booking.start_time %><%= booking.end_time %></p>
+          <p><%= booking.user.first_name %> for <%= booking.skill.name %></p>
+        </div>
+      <% end %>
+
+    <% end %>
+
+    <h3>My booking as a booker</h3>
+
+    <% @user.bookings.each do |booking| %>
+      <div class="card">
+        <p><%= booking.date %></p>
+        <p><%= booking.start_time %><%= booking.end_time %></p>
+        <p><%= booking.skill.user.first_name %> for <%= booking.skill.name %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="user-history">
+    <h2>---My Work History</h2>
+
+    <% @user.work_histories.each do |history|  %>
+      <div class="card-product">
+        <div class="card-product-infos">
+          <h2><%= history.company_name %></h2>
+          <hr/>
+          <p><strong><%= history.job_title %></strong></p>
+          <p>From <%= history.start_date %>- <%= history.end_date %></p>
+          <p><%= history.description %></p>
+        </div>
+      </div>
+    <% end %>
+
+
+  </div>
+
+</div>
