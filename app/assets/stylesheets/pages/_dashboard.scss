@@ -11,16 +11,22 @@
   margin-bottom: 16px;
 }
 
+.user-bio h3 {
+  text-align: center;
+}
+
+#city {
+  text-align: center;
+}
+
 .user-bookings {
-  background-color: white;
-  padding: 8px 16px;
+  padding: 16px;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
   margin-bottom: 16px;
 }
 
 .user-history {
-  background-color: white;
-  padding: 8px 16px;
+  padding: 16px;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
   margin-bottom: 16px;
 }
@@ -40,4 +46,9 @@
 
 .user-bookings strong {
   color: #5c5c5c;
+}
+
+.profile-pic {
+  display: flex;
+  justify-content: center;
 }
