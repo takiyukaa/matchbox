@@ -73,7 +73,10 @@
   <div class="user-history">
 
         <% @user.work_histories.each do |history|  %>
-          <div class="card-product">
+
+
+          <%= render 'shared/history_card', history: history %>
+          <!-- <div class="card-product">
             <div class="card-product-infos">
               <h2><%= history.company_name %></h2>
               <hr/>
@@ -81,7 +84,7 @@
               <p>From <%= history.start_date %>- <%= history.end_date %></p>
               <p><%= history.description %></p>
             </div>
-          </div>
+          </div> -->
         <% end %>
       </div>
     </div>
