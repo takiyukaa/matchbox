@@ -1,25 +1,29 @@
 <%= render 'shared/navbar' %>
 <div class="main-container">
   <div class="row">
-    <div class="col">
+    <div class="col-2">
       <div class="user-info">
-    <!--     <#% if @user.photo.attached? %>
-          <#% @path = @user.photo.key %>
-        <#% else %>
-          <#% @path = 'HBnqCUBU2XXNekM4pMAoBegi' %>
-        <#% end %> -->
-        <%= cl_image_tag("samples/animals/kitten-playing.gif", cloud_name:'dopoqpdhm') %>
+        <% if @user.photo.attached? %>
+          <% @path = @user.photo.key %>
+        <% else %>
+          <% @path = 'profile_whubsg' %>
+        <% end %>
+        <div class="profile-pic">
+          <%= cl_image_tag(@path, cloud_name:'dopoqpdhm') %>
+        </div>
         <h3><%= @user.first_name %> <%= @user.second_name %></h3>
         <p><%= @user.city %></p>
         <p><%= @user.bio %></p>
       </div>
       </div>
-      <div class="col">
+      <div class="col-4">
       <div class="user-skills">
-        <h2>My skills</h2>
-        <%= link_to new_skill_path do %>
-          <button class="btn btn-primary">Add a new skill</button>
-        <% end %>
+        <div class="add-skill">
+          <h4>My skills</h4>
+          <%= link_to new_skill_path do %>
+            <button class="btn btn-primary">Add a new skill</button>
+          <% end %>
+        </div>
           <div class="cards">
             <% @user.skills.each do |skill| %>
               <div class="card">
@@ -32,10 +36,12 @@
 
   </div>
   <div class="col-6">
-  <div class="user-bookings">
-    <h2>My Bookings</h2>
 
-    <h3>People have booked me for:</h3>
+  <h4 class="dash-header">My Bookings</h4>
+  <div class="user-bookings">
+
+    <p><strong>People have booked me for:</strong></p>
+
 
     <% @user.skills.each do |skill| %>
 
@@ -48,8 +54,9 @@
       <% end %>
 
     <% end %>
+    <hr/>
 
-    <h3>I have booked others for:</h3>
+    <p><strong>I have booked others for:</strong></p>
 
     <% @user.bookings.each do |booking| %>
       <div class="card">
@@ -60,8 +67,8 @@
     <% end %>
   </div>
 
+  <h4 class="dash-header">My Work History</h4>
   <div class="user-history">
-    <h2>My Work History</h2>
 
         <% @user.work_histories.each do |history|  %>
           <div class="card-product">
