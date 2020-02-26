@@ -19,6 +19,12 @@ gem 'cloudinary', '~> 1.12.0'
 # Authentication
 gem 'devise', '~> 4.7', '>= 4.7.1'
 
+# Fake seed data
+gem 'faker', '~> 2.10', '>= 2.10.2'
+
+#Pundit
+gem 'pundit', '~> 2.1'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
