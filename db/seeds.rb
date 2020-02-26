@@ -40,7 +40,7 @@ puts "Creating seeds"
     date: Date.today - rand(1..10),
     start_time: start_time,
     end_time: start_time + rand(1..2).hours,
-    status: ['acepted', 'rejected', 'pending'].sample,
+    status: ['accepted', 'rejected', 'pending'].sample,
     skill: Skill.all.sample,
     user: user,
     user_comment: Faker::TvShows::Simpsons.quote,
