@@ -25,6 +25,9 @@ gem 'faker', '~> 2.10', '>= 2.10.2'
 #Pundit
 gem 'pundit', '~> 2.1'
 
+# PG search
+gem 'pg_search', '~> 2.3.0'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
