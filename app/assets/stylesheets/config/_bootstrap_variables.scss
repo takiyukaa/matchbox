@@ -6,13 +6,13 @@
 // General style
 $font-family-sans-serif:  $body-font;
 $headings-font-family:    $headers-font;
-$body-bg:                 #d1dde3;
+$body-bg:                 #acc7d3;
 $font-size-base: 1rem;
 
 // Colors
 $body-color: $gray;
 $primary:    #f2d26f;
-$secondary:  $light-gray;
+$secondary:  #aecdd4;
 $success:    $green;
 $info:       $yellow;
 $danger:     $red;
@@ -24,3 +24,11 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+.secondary-buttons a {
+  color: #212529;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    color: #212529;
+  }
+}
