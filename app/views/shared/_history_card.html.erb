@@ -3,7 +3,16 @@
     <h5><%= history.company_name %></h5>
     <hr/>
     <p><strong><%= history.job_title %></strong></p>
-    <p>From <%= history.start_date %>- <%= history.end_date %></p>
+    <% if history.start_date && history.end_date %>
+      <p> From <%= history.start_date %> - <%= history.end_date %></p>
+    <% elsif history.start_date.nil? %>
+      <p></p>
+    <% else history.start_date %>
+      <p> From <%= history.start_date %>- Present</p>
+    <% end %>
     <p><%= history.description %></p>
   </div>
 </div>
+
+
+
