@@ -39,6 +39,12 @@
   align-items: center;
 }
 
+.card-space-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .add-skill a {
   margin-left: 16px;
 }

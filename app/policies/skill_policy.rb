@@ -21,6 +21,10 @@ class SkillPolicy < ApplicationPolicy
     edit?
   end
 
+  def destroy?
+    user_is_owner_of_record?
+  end
+
   private
 
   def user_is_owner_of_record?
