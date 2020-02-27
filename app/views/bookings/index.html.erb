@@ -1,4 +1,5 @@
-<%= render 'shared/navbar' %>
+<%= render 'shared/navbar', path: @path %>
+<!-- <div class="bg-color"> -->
 <div class="main-container">
   <div class="row">
     <div class="col-12 col-sm-4 col-md-2">
@@ -30,9 +31,11 @@
         <% @user.skills.each do |skill| %>
           <% skill.bookings.each do |booking| %>
             <div class="card">
-              <p><%= booking.user.first_name %> has booked me for: <%= booking.skill.name %></p>
-              <p> Status: <%= booking.status %></p>
-              <p><%= booking.date %></p>
+              <p><i class="far fa-calendar-alt"></i> <%= booking.date.strftime("%A, %b %d") %></p>
+              <p><i class="far fa-clock"></i> <%= booking.start_time.strftime("%l:%M %p") %> ~ <%= booking.end_time.strftime("%l:%M %p") %></p>
+              <p><i class="fas fa-user-alt"></i> <%= booking.user.first_name %> <%= booking.user.second_name %></p>
+              <p><i class="fas fa-flag"></i>  <%= booking.skill.name %></p>
+              <p><i class="far fa-check-square"></i> <%= booking.status %></p>
             </div>
           <% end %>
         <% end %>
@@ -40,9 +43,11 @@
         <p><strong>I have booked others for:</strong></p>
         <% @user.bookings.each do |booking| %>
           <div class="card">
-            <p>I have booked <%= booking.skill.user.first_name %> for: <%= booking.skill.name %></p>
-            <p> Status: <%= booking.status %></p>
-            <p><%= booking.date %></p>
+            <p><i class="far fa-calendar-alt"></i> <%= booking.date.strftime("%A, %b %d") %></p>
+            <p><i class="far fa-clock"></i> <%= booking.start_time.strftime("%l:%M %p") %> ~ <%= booking.end_time.strftime("%l:%M %p") %></p>
+            <p><i class="fas fa-user-alt"></i> <%= booking.skill.user.first_name %> <%= booking.skill.user.second_name %></p>
+            <p><i class="fas fa-flag"></i>  <%= booking.skill.name %></p>
+            <p><i class="far fa-check-square"></i> <%= booking.status %></p>
           </div>
         <% end %>
       </div>
