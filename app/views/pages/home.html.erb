@@ -18,10 +18,18 @@
   <div class="banner-text">
     <h2>Find your perfect business match</h2>
     <div class="nav-banner">
-      <input type="text" placeholder="Search">
+      <%= form_tag skills_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Search"
+        %>
+        <%= submit_tag "Search", class: "fas fa-search" %>
+      <% end %>
+<!--       <input type="text" placeholder="Search">
         <%= link_to "#" do %>
             <i class="fas fa-search" style="color: white;"></i>
-        <% end %>
+        <% end %> -->
     </div>
   </div>
 </div>

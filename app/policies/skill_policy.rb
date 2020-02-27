@@ -24,7 +24,7 @@ class SkillPolicy < ApplicationPolicy
   private
 
   def user_is_owner_of_record?
-   @record.user == @user
+   record.user == user
   end
 
 end

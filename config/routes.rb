@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   resources :bookings, only: [:index]
 
-  resources :skills, only: [:show, :new, :create]
-
+  resources :skills, only: [:index, :show, :new, :create] do
+    collection do
+      get 'search'
+    end
+  end
 end
