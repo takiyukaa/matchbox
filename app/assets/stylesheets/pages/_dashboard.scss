@@ -1,3 +1,7 @@
+// body {
+//   background-color: #acc7d3;
+// }
+
 .user-info h3 {
   margin: 0 auto;
   margin-top: 16px;
@@ -33,6 +37,12 @@
 .add-skill {
   display: flex;
   align-items: center;
+}
+
+.card-space-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .add-skill a {
