@@ -20,7 +20,8 @@
               <div class="card-profile">
                 <%= cl_image_tag(@path, crop:"fill", format:"png") %>
                   <div class="card-profile-infos">
-                      <h2><%= skill.user.first_name %></h2>
+                      <h2><%= skill.name %></h2>
+                      <p><%= skill.user.full_name %></p>
                       <p><%= skill.user.city %></p>
                       <p><%= skill.description %></p>
                   </div>
