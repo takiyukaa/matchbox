@@ -1,5 +1,4 @@
 <%= render 'shared/navbar' %>
-<!-- <div class="bg-color"> -->
 <div class="main-container">
   <div class="row">
     <div class="col-12 col-sm-4 col-md-2">
@@ -16,13 +15,9 @@
             <div class="user-bio">
               <h3><%= @user.first_name %> <%= @user.second_name %></h3>
               <p id="city"><%= @user.city %></p>
-            <!-- <div class="collapse" id="collapseBio" aria-expanded="false"> -->
               <div class="card">
                 <p><%= @user.bio %></p>
               </div>
-                <a role="button" class="collapsed" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                </a>
-<!--             </div> -->
           </div>
         </div>
       </div>
@@ -38,7 +33,6 @@
               <p><%= booking.user.first_name %> has booked me for: <%= booking.skill.name %></p>
               <p> Status: <%= booking.status %></p>
               <p><%= booking.date %></p>
-              <!--           <p><%= booking.start_time %><%= booking.end_time %></p> -->
             </div>
           <% end %>
         <% end %>
@@ -49,7 +43,6 @@
             <p>I have booked <%= booking.skill.user.first_name %> for: <%= booking.skill.name %></p>
             <p> Status: <%= booking.status %></p>
             <p><%= booking.date %></p>
-            <!--         <p><%= booking.start_time %><%= booking.end_time %></p> -->
           </div>
         <% end %>
       </div>
