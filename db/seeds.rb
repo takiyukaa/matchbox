@@ -104,7 +104,7 @@ Booking.create!(
 
 
 
-3.times do
+10.times do
   user = User.create!(
     email: Faker::Internet.email,
     password: "123123",
@@ -115,9 +115,19 @@ Booking.create!(
     )
   PROVIDERS << user
 
+  url = URI.open(open('http://le-wagon-tokyo.herokuapp.com/batches/363/student').read)
+  user.photo.attach(io: url, filename: 'provider.jpg', content_type: 'image/jpg')
+
 
   skill = Skill.create!(
     name: Faker::Educator.degree,
+    description: Faker::TvShows::TheFreshPrinceOfBelAir.quote,
+    user: user
+    )
+  PSKILLS << skill
+
+  skill = Skill.create!(
+    name: "CSS",
     description: Faker::TvShows::TheFreshPrinceOfBelAir.quote,
     user: user
     )
@@ -133,7 +143,7 @@ Booking.create!(
     )
 end
 
-3.times do
+5.times do
   user = User.create!(
     email: Faker::Internet.email,
     password: "123123",
@@ -143,6 +153,9 @@ end
     bio: Faker::Hipster.paragraphs
     )
   BOOKERS << user
+
+  url = URI.open(open('http://le-wagon-tokyo.herokuapp.com/batches/363/student').read)
+  user.photo.attach(io: url, filename: 'booker.jpg', content_type: 'image/jpg')
 
 
   Skill.create!(
@@ -161,7 +174,7 @@ end
     )
 end
 
-3.times do
+5.times do
   Booking.create!(
     date: Date.today - rand(1..10),
     start_time: START_TIME,
