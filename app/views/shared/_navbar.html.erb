@@ -7,16 +7,20 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <div class="nav-search">
-         <input type="text" placeholder="Search">
-           <%= link_to "#" do %>
-              <i class="fas fa-search"></i>
+          <%= form_tag skills_path, method: :get, class: "search-form" do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Search"
+            %>
+            <%= button_tag type: 'submit' do %>
+              <i class="fas fa-search" style="color: black"></i>
             <% end %>
-          </div>
+          <% end %>
       </li>
       <% if user_signed_in? %>
         <li class="nav-item dropdown" style="list-style-type: none;">
