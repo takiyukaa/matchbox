@@ -90,6 +90,12 @@
           </div>
         <% @user.work_histories.each do |history|  %>
         <%= render 'shared/history_card', history: history %>
+          <%= link_to edit_work_history_path(history) do %>
+          <button class="btn btn-primary">Edit</button>
+            <% end %>
+          <%= link_to work_history_path(history), method: :delete, data: { confirm: "Are you sure?"} do %>
+            <button class="btn btn-primary">Delete</button>
+            <% end %>
             <!-- <div class="card-product">
               <div class="card-product-infos">
                 <h2><%= history.company_name %></h2>
