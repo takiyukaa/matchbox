@@ -4,13 +4,22 @@
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
+// #collapseBio a.collapsed:after  {
+//     content: '+ Show More';
+// }
+
+// #collapseBio a:not(.collapsed):after {
+//     content: '- Show Less';
+// }
+
+
 .card-profile {
   margin: 18px;
   height: 300px;
   width: 300px;
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
 
   h2 {
     font-size: 16px;
