@@ -1,17 +1,24 @@
-<div class="card">
-  <div class="card-product-infos">
-    <h5><%= history.company_name %></h5>
+  <div class="card">
+    <div class="card-space-between">
+      <p><strong><%= history.company_name %></strong></p>
+        <div class="right-buttons">
+          <%= link_to edit_work_history_path(history) do %>
+            <button class="btn btn-primary">Edit</button>
+          <% end %>
+          <%= link_to work_history_path(history), method: :delete, data: { confirm: "Are you sure?"} do %>
+            <button class="btn btn-primary">Delete</button>
+          <% end %>
+        </div>
+      </div>
     <hr/>
     <p><strong><%= history.job_title %></strong></p>
     <% if history.start_date && history.end_date %>
       <p> From <%= history.start_date %> - <%= history.end_date %></p>
     <% elsif history.start_date.nil? %>
-      <p></p>
     <% else history.start_date %>
       <p> From <%= history.start_date %>- Present</p>
     <% end %>
     <p><%= history.description %></p>
-  </div>
 </div>
 
 
