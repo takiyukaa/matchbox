@@ -1,4 +1,5 @@
 <%= render 'shared/navbar', path: @path %>
+<!-- <div class="bg-color"> -->
 <div class="main-container">
   <div class="row">
     <div class="col-12 col-sm-4 col-md-2">
@@ -10,14 +11,18 @@
           <% @path = 'profile_whubsg' %>
           <% end %>
           <div class="profile-pic">
-            <%= cl_image_tag(@path, cloud_name:'dopoqpdhm', radius:"max", height:'90%', format:"png") %>
+            <%= cl_image_tag(@path, radius:"max", height:'90%', format:"png") %>
           </div>
             <div class="user-bio">
               <h3><%= @user.first_name %> <%= @user.second_name %></h3>
               <p id="city"><%= @user.city %></p>
+            <!-- <div class="collapse" id="collapseBio" aria-expanded="false"> -->
               <div class="card">
                 <p><%= @user.bio %></p>
               </div>
+                <a role="button" class="collapsed" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                </a>
+<!--             </div> -->
           </div>
         </div>
       </div>
@@ -29,10 +34,6 @@
         <p><strong>People have booked me for:</strong></p>
         <% @user.skills.each do |skill| %>
           <% skill.bookings.each do |booking| %>
-
-
-
-
             <div class="card">
               <p><i class="far fa-calendar-alt"></i> <%= booking.date.strftime("%A, %b %d") %></p>
               <p><i class="far fa-clock"></i> <%= booking.start_time.strftime("%l:%M %p") %> ~ <%= booking.end_time.strftime("%l:%M %p") %></p>
@@ -40,25 +41,19 @@
               <p><i class="fas fa-flag"></i>  <%= booking.skill.name %></p>
               <p><i class="far fa-check-square"></i> <%= booking.status %></p>
             </div>
-
-
           <% end %>
         <% end %>
         <hr/>
         <p><strong>I have booked others for:</strong></p>
-
         <% @user.bookings.each do |booking| %>
-
           <div class="card">
-            <p><i class="far fa-calendar-alt"></i> <%= booking.date.strftime("%A, %b %d") %> </p>
+            <p><i class="far fa-calendar-alt"></i> <%= booking.date.strftime("%A, %b %d") %></p>
             <p><i class="far fa-clock"></i> <%= booking.start_time.strftime("%l:%M %p") %> ~ <%= booking.end_time.strftime("%l:%M %p") %></p>
-            <p><i class="fas fa-user-alt"> <%= booking.skill.user.first_name %> <%= booking.skill.user.second_name %></p>
+            <p><i class="fas fa-user-alt"></i> <%= booking.skill.user.first_name %> <%= booking.skill.user.second_name %></p>
             <p><i class="fas fa-flag"></i>  <%= booking.skill.name %></p>
             <p><i class="far fa-check-square"></i> <%= booking.status %></p>
           </div>
-
         <% end %>
-
       </div>
     </div>
 
@@ -91,7 +86,12 @@
         </div>
       </div>
       <div class="dashboard">
-        <h4 class="dash-header">My Work History</h4>
+        <div>
+          <h4 class="dash-header">My Work History</h4>
+            <%= link_to new_work_history_path do %>
+          <button class="btn btn-primary">Add a new skill</button>
+          <% end %>
+          </div>
         <% @user.work_histories.each do |history|  %>
         <%= render 'shared/history_card', history: history %>
             <!-- <div class="card-product">
@@ -104,8 +104,10 @@
               </div>
             </div> -->
         <% end %>
+        </div>
       </div>
     </div>
 
+  </div>
 </div>
-</div>
+<!-- </div> -->
