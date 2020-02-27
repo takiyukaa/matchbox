@@ -16,6 +16,29 @@ class WorkHistoriesController < ApplicationController
     end
   end
 
+ def edit
+    @workhistory = WorkHistory.find(params[:id])
+    authorize @workhistory
+
+  end
+
+  def update
+    @workhistory = WorkHistory.find(params[:id])
+    if @workhistory.update(work_history_params)
+      redirect_to bookings_path
+      authorize @workhistory
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @workhistory = WorkHistory.find(params[:id])
+    @workhistory.destroy
+    authorize @workhistory
+    redirect_to bookings_path
+  end
+
 private
 
   def work_history_params
