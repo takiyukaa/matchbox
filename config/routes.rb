@@ -5,10 +5,14 @@ Rails.application.routes.draw do
 
   resources :bookings, only: [:index]
   resources :work_histories, only: [:new, :create]
-  resources :skills, only: [:index, :show, :new, :create] do
+ 
+  resources :users, only: [:show] do
+    resources :bookings, only: [:new, :create]
+  end
+  
+  resources :skills, only: [:index, :new, :create, :edit, :update, :destroy] do
     collection do
       get 'search'
     end
   end
-
 end
