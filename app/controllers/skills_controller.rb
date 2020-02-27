@@ -24,6 +24,28 @@ class SkillsController < ApplicationController
     end
   end
 
+  def edit
+    @skill = Skill.find(params[:id])
+      authorize @skill
+  end
+
+  def update
+    @skill = Skill.find(params[:id])
+    if @skill.update(skill_params)
+      redirect_to bookings_path
+      authorize @skill
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @skill = Skill.find(params[:id])
+      authorize @skill
+    @skill.destroy
+    redirect_to bookings_path
+  end
+
   private
 
   def skill_params
