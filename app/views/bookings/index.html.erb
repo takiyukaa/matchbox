@@ -1,4 +1,4 @@
-<%= render 'shared/navbar' %>
+<%= render 'shared/navbar', path: @path %>
 <div class="main-container">
   <div class="row">
     <div class="col-12 col-sm-4 col-md-2">
@@ -33,12 +33,21 @@
         <p><strong>People have booked me for:</strong></p>
         <% @user.skills.each do |skill| %>
           <% skill.bookings.each do |booking| %>
+
+
+
+
             <div class="card">
+              <p><%= booking.date %></p>
               <p><%= booking.user.first_name %> has booked me for: <%= booking.skill.name %></p>
               <p> Status: <%= booking.status %></p>
-              <p><%= booking.date %></p>
               <!--           <p><%= booking.start_time %><%= booking.end_time %></p> -->
             </div>
+
+
+
+
+
           <% end %>
         <% end %>
         <hr/>
