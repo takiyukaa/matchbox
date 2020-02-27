@@ -83,7 +83,12 @@
         </div>
       </div>
       <div class="dashboard">
-        <h4 class="dash-header">My Work History</h4>
+        <div>
+          <h4 class="dash-header">My Work History</h4>
+            <%= link_to new_work_history_path do %>
+          <button class="btn btn-primary">Add a new skill</button>
+          <% end %>
+          </div>
         <% @user.work_histories.each do |history|  %>
         <%= render 'shared/history_card', history: history %>
             <!-- <div class="card-product">
@@ -96,6 +101,7 @@
               </div>
             </div> -->
         <% end %>
+        </div>
       </div>
     </div>
 
