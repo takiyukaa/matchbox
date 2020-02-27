@@ -1,5 +1,11 @@
 class SkillsController < ApplicationController
-  def show
+
+  def index
+    if params[:query].present?
+      @skills = policy_scope(Skill).global_search(params[:query])
+    else
+      @skills = policy_scope(Skill)
+    end
   end
 
   def new
