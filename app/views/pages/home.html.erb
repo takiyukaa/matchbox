@@ -5,12 +5,31 @@
         <h4>MatchBox</h4>
       <% end %>
     </div>
+
+    <% if user_signed_in? %>
+
+      <% if current_user.photo.attached? %>
+        <% @path = current_user.photo.key %>
+      <% else %>
+        <% @path = 'profile_whubsg' %>
+      <% end %>
+
+    <% else %>
+      <% @path = 'profile_whubsg' %>
+    <% end %>
+
     <div>
       <li class="nav-item dropdown" style="list-style-type: none;">
-        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <%= cl_image_tag @path, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to "Profile", "#", class: "dropdown-item" %>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          <%= link_to "Dashboard", bookings_path, class: "dropdown-item" %>
+
+          <% if user_signed_in? %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          <% else %>
+            <%= link_to "Log in", new_user_session_path, class: "dropdown-item" %>
+          <% end %>
+
         </div>
       </li>
     </div>
@@ -44,36 +63,36 @@
 
     <div class="col-12 col-md-6 col-lg-4">
       <div class="card-profile">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <img src="https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1581552207/j51suxjyfz3zmkxa75hy.jpg" />
         <div class="card-profile-infos">
-          <h2>skill.user.first_name</h2>
-          <p>skill.user.work_histrories.last.company_name</p>
-          <p>skill.user.city</p>
-          <p>skill.description</p>
+          <h2>Frances</h2>
+          <p>ABC design firm(2016 - 2018)</p>
+          <p>Ichigaya, Tokyo</p>
+          <p>HTML/CSS/JS experiences of designing homepages of Uber and Airbnb</p>
         </div>
       </div>
     </div>
 
     <div class="col-12 col-md-6 col-lg-4">
       <div class="card-profile">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <img src="https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1581473191/yqgsv8lbex3uer3uq1bh.jpg" />
         <div class="card-profile-infos">
-          <h2>skill.user.first_name</h2>
-          <p>skill.user.work_histrories.last.company_name</p>
-          <p>skill.user.city</p>
-          <p>skill.description</p>
+          <h2>Yuka</h2>
+          <p>XYZ Airlines(2010 - current)</p>
+          <p>Yokohama, Kanagawa</p>
+          <p>Customer service based on long years of flight attendant experience on international flight.</p>
         </div>
       </div>
     </div>
 
     <div class="col-12 col-md-6 col-lg-4">
       <div class="card-profile">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <img src="https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1581471969/vjdib7xizgrxooj2vadp.jpg" />
         <div class="card-profile-infos">
-          <h2>skill.user.first_name</h2>
-          <p>skill.user.work_histrories.last.company_name</p>
-          <p>skill.user.city</p>
-          <p>skill.description</p>
+          <h2>Jethro</h2>
+          <p>ABC marketing firm(2018 - current)</p>
+          <p>Ebisu, Tokyo</p>
+          <p>EDM marketing/Interview based market research</p>
         </div>
       </div>
     </div>

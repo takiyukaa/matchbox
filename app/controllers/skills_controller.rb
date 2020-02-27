@@ -22,10 +22,6 @@ class SkillsController < ApplicationController
     else
       render :new
     end
-
-    # def show
-    #   authorize @skill
-    # end
   end
 
   private
