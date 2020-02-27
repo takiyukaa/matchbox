@@ -19,7 +19,7 @@
       </div>
       </div>
       <div class="col-4">
-        <%= link_to new_user_booking do %>
+        <%= link_to new_user_booking_path(@user) do %>
           <button class="btn btn-primary">Book a Meeting with <%= @user.first_name %> <%= @user.second_name %></button>
         <% end %>
       <div class="user-skills">
