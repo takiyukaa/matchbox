@@ -32,27 +32,24 @@
         <h4 class="dash-header">My Bookings</h4>
         <p><strong>People have booked me for:</strong></p>
         <% @user.skills.each do |skill| %>
-        <% skill.bookings.each do |booking| %>
-        <div class="card">
-          <p><%= booking.user.first_name %> has booked me for: <%= booking.skill.name %></p>
-          <p> Status: <%= booking.status %></p>
-          <p><%= booking.date %></p>
-          <!--           <p><%= booking.start_time %><%= booking.end_time %></p> -->
-        </div>
-        <% end %>
-
+          <% skill.bookings.each do |booking| %>
+            <div class="card">
+              <p><%= booking.user.first_name %> has booked me for: <%= booking.skill.name %></p>
+              <p> Status: <%= booking.status %></p>
+              <p><%= booking.date %></p>
+              <!--           <p><%= booking.start_time %><%= booking.end_time %></p> -->
+            </div>
+          <% end %>
         <% end %>
         <hr/>
-
         <p><strong>I have booked others for:</strong></p>
-
         <% @user.bookings.each do |booking| %>
-        <div class="card">
-          <p>I have booked <%= booking.skill.user.first_name %> for: <%= booking.skill.name %></p>
-          <p> Status: <%= booking.status %></p>
-          <p><%= booking.date %></p>
-          <!--         <p><%= booking.start_time %><%= booking.end_time %></p> -->
-        </div>
+          <div class="card">
+            <p>I have booked <%= booking.skill.user.first_name %> for: <%= booking.skill.name %></p>
+            <p> Status: <%= booking.status %></p>
+            <p><%= booking.date %></p>
+            <!--         <p><%= booking.start_time %><%= booking.end_time %></p> -->
+          </div>
         <% end %>
       </div>
     </div>
