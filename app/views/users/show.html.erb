@@ -51,7 +51,20 @@
           <h4 class="dash-header">My Work History</h4>
         </div>
         <% @user.work_histories.each do |history|  %>
-        <%= render 'shared/history_card', history: history %>
+          <div class="card">
+            <div class="card-space-between">
+              <p><strong><%= history.company_name %></strong></p>
+              </div>
+            <hr/>
+            <p><%= history.job_title %></p>
+            <% if history.start_date && history.end_date %>
+              <p> From <%= history.start_date %> - <%= history.end_date %></p>
+            <% elsif history.start_date.nil? %>
+            <% else history.start_date %>
+              <p> From <%= history.start_date %>- Present</p>
+            <% end %>
+            <p><%= history.description %></p>
+          </div>
         <% end %>
       </div>
     </div>
