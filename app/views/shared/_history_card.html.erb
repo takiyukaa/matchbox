@@ -1,19 +1,19 @@
   <div class="card">
     <div class="card-space-between">
       <p><strong><%= history.company_name %></strong></p>
-        <div class="right-buttons">
+        <div class="right-buttons d-flex">
           <%= link_to edit_work_history_path(history) do %>
-            <button class="btn btn-primary">Edit</button>
+            <p><strong><i class="far fa-edit mx-3"></i></strong></p>
           <% end %>
           <%= link_to work_history_path(history), method: :delete, data: { confirm: "Are you sure?"} do %>
-            <button class="btn btn-primary">Delete</button>
+            <p><strong><i class="fas fa-trash"></i></strong></p>
           <% end %>
         </div>
       </div>
     <hr/>
     <p><strong><%= history.job_title %></strong></p>
     <% if history.start_date && history.end_date %>
-      <p> From <%= history.start_date %> - <%= history.end_date %></p>
+      <p> From <%= history.start_date %> to <%= history.end_date %></p>
     <% elsif history.start_date.nil? %>
     <% else history.start_date %>
       <p> From <%= history.start_date %>- Present</p>
