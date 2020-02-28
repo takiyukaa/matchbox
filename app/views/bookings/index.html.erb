@@ -31,11 +31,13 @@
         <% @user.skills.each do |skill| %>
           <% skill.bookings.each do |booking| %>
             <div class="card">
-              <p><i class="far fa-calendar-alt"></i> <%= booking.date.strftime("%A, %b %d") %></p>
-              <p><i class="far fa-clock"></i> <%= booking.start_time.strftime("%l:%M %p") %> ~ <%= booking.end_time.strftime("%l:%M %p") %></p>
-              <p><i class="fas fa-user-alt"></i> <%= booking.user.first_name %> <%= booking.user.second_name %></p>
-              <p><i class="fas fa-flag"></i>  <%= booking.skill.name %></p>
-              <p><i class="far fa-check-square"></i> <%= booking.status %></p>
+              <div class="d-flex align-items-center">
+                <h5><%= booking.skill.name %></h5>
+                <p class="status"><%= booking.status %></p>
+              </div>
+              <hr/>
+              <p><i class="far fa-calendar-alt"></i> <%= booking.date.strftime("%A, %b %d") %></i> <%= booking.start_time.strftime("%l:%M %p") %> ~ <%= booking.end_time.strftime("%l:%M %p") %></p>
+              <p><i class="fas fa-user-alt"></i> <%= booking.user.full_name %></p>
             </div>
           <% end %>
         <% end %>
@@ -43,11 +45,13 @@
         <p><strong>I have booked others for:</strong></p>
         <% @user.bookings.each do |booking| %>
           <div class="card">
-            <p><i class="far fa-calendar-alt"></i> <%= booking.date.strftime("%A, %b %d") %></p>
-            <p><i class="far fa-clock"></i> <%= booking.start_time.strftime("%l:%M %p") %> ~ <%= booking.end_time.strftime("%l:%M %p") %></p>
-            <p><i class="fas fa-user-alt"></i> <%= booking.skill.user.first_name %> <%= booking.skill.user.second_name %></p>
-            <p><i class="fas fa-flag"></i>  <%= booking.skill.name %></p>
-            <p><i class="far fa-check-square"></i> <%= booking.status %></p>
+            <div class="d-flex align-items-center">
+              <h5><%= booking.skill.name %></h5>
+              <p class="status"><%= booking.status %></p>
+            </div>
+            <hr/>
+            <p><i class="far fa-calendar-alt"></i> <%= booking.date.strftime("%A, %b %d") %></i> <%= booking.start_time.strftime("%l:%M %p") %> ~ <%= booking.end_time.strftime("%l:%M %p") %></p>
+            <p><i class="fas fa-user-alt"></i> <%= booking.skill.user.full_name %></p>
           </div>
         <% end %>
       </div>
@@ -67,12 +71,12 @@
           <div class="card">
             <div class="card-space-between">
               <p><strong><%= skill.name %></strong></p>
-              <div class="right-buttons">
+              <div class="right-buttons d-flex">
                 <%= link_to edit_skill_path(skill) do %>
-                <button class="btn btn-primary">Edit</button>
+                <p><strong><i class="far fa-edit mx-3"></i></strong></p>
                 <% end %>
                 <%= link_to skill_path(skill), method: :delete, data: { confirm: "Are you sure?"} do %>
-                <button class="btn btn-primary">Delete</button>
+                <p><strong><i class="fas fa-trash"></i></strong></p>
                 <% end %>
               </div>
             </div>
@@ -82,12 +86,12 @@
         </div>
       </div>
       <div class="dashboard">
-        <div>
+        <div class="add-skill">
           <h4 class="dash-header">My Work History</h4>
             <%= link_to new_work_history_path do %>
-          <button class="btn btn-primary">Add a new skill</button>
+          <button class="btn btn-primary">Add a work experience</button>
           <% end %>
-          </div>
+        </div>
         <% @user.work_histories.each do |history|  %>
         <%= render 'shared/history_card', history: history %>
             <!-- <div class="card-product">

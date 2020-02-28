@@ -1,11 +1,13 @@
-// body {
-//   background-color: #acc7d3;
-// }
+.status {
+  border-style: solid;
+  padding: 4px;
+  margin-left: 24px;
+  border-width: 1px;
+  border-radius: 4px;
+  text-align: center;
+  width: 20%;
+}
 
-// .bg-color {
-//   background-color: blue;
-//   height: 100vh;
-// }
 .user-info h3 {
   margin: 0 auto;
   margin-top: 16px;
@@ -39,6 +41,12 @@
   color: #5c5c5c;
 }
 
+.dashboard strong i {
+  &:hover {
+    color: $primary;
+  }
+}
+
 .add-skill {
   display: flex;
   align-items: center;
@@ -52,6 +60,10 @@
 
 .add-skill a {
   margin-left: 16px;
+}
+
+.add-skill h4 {
+  margin-bottom: 0;
 }
 
 .dash-header {

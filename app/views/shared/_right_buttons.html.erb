@@ -1,0 +1,8 @@
+<div class="right-buttons">
+  <%= link_to edit_work_history_path(history) do %>
+    <button class="btn btn-primary">Edit</button>
+  <% end %>
+  <%= link_to work_history_path(history), method: :delete, data: { confirm: "Are you sure?"} do %>
+    <button class="btn btn-primary">Delete</button>
+  <% end %>
+</div>
