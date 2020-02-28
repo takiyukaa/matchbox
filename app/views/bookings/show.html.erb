@@ -1,6 +1,7 @@
-<div class="container">
+<div class="main-container">
   <div class ="row justify-content-center">
-    <div class="col-xs-12, col-sm-8, col-md-6">
+    <div class="col-xs-12, col-sm-10 col-lg-6">
+      <div class="card">
       <% if @booking.status == "pending" %>
         <h3 class="mt-5">Booking request pending.</h3>
         <p class="mt-1">You will be notified once <%= @user.first_name %> accept or reject your booking!</p>
@@ -33,4 +34,5 @@
       <button class="btn btn-primary rounded">Back to home</button>
     <% end %>
   </div>
+</div>
 </div>
