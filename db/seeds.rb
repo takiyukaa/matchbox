@@ -115,7 +115,7 @@ Booking.create!(
     )
   PROVIDERS << user
 
-  url = URI.open(open('http://le-wagon-tokyo.herokuapp.com/batches/363/student').read)
+  url = URI.open(open('http://le-wagon-tokyo.herokuapp.com/batches/random/student').read)
   user.photo.attach(io: url, filename: 'provider.jpg', content_type: 'image/jpg')
 
 
@@ -154,7 +154,7 @@ end
     )
   BOOKERS << user
 
-  url = URI.open(open('http://le-wagon-tokyo.herokuapp.com/batches/363/student').read)
+  url = URI.open(open('http://le-wagon-tokyo.herokuapp.com/batches/random/student').read)
   user.photo.attach(io: url, filename: 'booker.jpg', content_type: 'image/jpg')
 
 
