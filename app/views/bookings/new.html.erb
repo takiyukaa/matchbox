@@ -8,7 +8,7 @@
         <%= simple_form_for [@user, @booking] do |f| %>
 
           <%= f.input :skill_id, collection: @user.skills %>
-          <%= f.input :date %>
+          <%= f.input :date, as: :string, input_html: {type: :date} %>
           <%= f.input :start_time %>
           <%= f.input :end_time %>
           <%= f.input :user_comment, label: 'Add a note' %>
