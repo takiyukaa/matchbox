@@ -11,14 +11,14 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <div class="nav-search">
-          <%= form_tag skills_path, method: :get, class: "search-form" do %>
+          <%= form_tag skills_path, method: :get, class: "nav-search-form" do %>
             <%= text_field_tag :query,
               params[:query],
               class: "form-control",
               placeholder: "Search"
             %>
-            <%= button_tag type: 'submit' do %>
-              <i class="fas fa-search" style="color: black"></i>
+            <%= button_tag type: 'submit', class: 'btn btn-primary' do %>
+                <i class="fas fa-search" style="color: white;"></i>
             <% end %>
           <% end %>
       </li>
