@@ -9,7 +9,7 @@
 
     <div class ="row">
         <% @skills.each do |skill| %>
-          <div class="col-12 col-md-6 col-lg-3">
+          <div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-4">
 
             <%= link_to user_path(skill.user) do %>
             <% if skill.user.photo.attached? %>
