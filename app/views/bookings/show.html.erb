@@ -1,3 +1,4 @@
+<% if @booking.user == current_user %>
 <div class="main-container">
   <div class ="row justify-content-center">
     <div class="col-xs-12, col-sm-10 col-lg-6">
@@ -5,6 +6,54 @@
       <% if @booking.status == "pending" %>
         <h3 class="mt-5">Booking request pending.</h3>
         <p class="mt-1">You will be notified once <%= @user.first_name %> accept or reject your booking!</p>
+      <% elsif @booking.status == "accepted" %>
+        <p>Your booking has been confirmed. See below.</p>
+      <% end %>
+      <div class="container">
+        <div class="row justify-content-between">
+          <h4>Your booking details</h4>
+          <button class='btn btn-primary rounded' id='cancel-booking'>Accept</button>
+          <%= link_to user_booking_path(current_user, @booking, booking: { status: "accepted"}), remote: true, method: :patch, id: 'accept-booking-confirmed' do %>
+          <% end %>
+        </div>
+      </div>
+      <p class="mb-1">Person: <%= @user.first_name %></p>
+      <p class="mb-1">Skill: <%= @booking.skill.name %></p>
+      <p class="mb-1">Date: <%= @booking.date %></p>
+      <p class="mb-1">Start time: <%= @booking.start_time %></p>
+      <p class="mb-1"><%= @user.first_name %>'s comment: <%= @booking.provider_comment %></p>
+      <p class="mb-1">Your comment: <%= @booking.user_comment %></p>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="column align-items-center">
+    <%= link_to bookings_path(current_user) do %>
+      <button class="btn btn-primary rounded">Dashboard</button>
+    <% end %>
+    <%= link_to root_path do %>
+      <button class="btn btn-primary rounded">Back to home</button>
+    <% end %>
+  </div>
+</div>
+<h1>A</h1>
+
+<% elsif @booking.skill.user == current_user %>
+
+<div class="container">
+  <div class ="row justify-content-center">
+    <div class="col-xs-12, col-sm-8, col-md-6">
+      <% if @booking.status == "pending" %>
+        <%= simple_form_for @booking do |f| %>
+          <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+          <%= f.submit "Accept", class: "btn btn-primary" %>
+        <% end %>
+
+        <%= simple_form_for @booking do |f| %>
+          <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+          <%= f.submit "Reject", class: "btn btn-danger" %>
+        <% end %>
+
       <% elsif @booking.status == "accepted" %>
         <p>Your booking has been confirmed. See below.</p>
       <% end %>
@@ -35,4 +84,7 @@
     <% end %>
   </div>
 </div>
+
 </div>
+
+<% end %>

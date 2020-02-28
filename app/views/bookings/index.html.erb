@@ -30,6 +30,23 @@
         <p><strong>People have booked me for:</strong></p>
         <% @user.skills.each do |skill| %>
           <% skill.bookings.each do |booking| %>
+            <%= link_to  booking_path(booking) do %>
+              <div class="card">
+                <div class="d-flex align-items-center">
+                  <h5><%= booking.skill.name %></h5>
+                  <p class="status"><%= booking.status %></p>
+                </div>
+                <hr/>
+                <p><i class="far fa-calendar-alt"></i> <%= booking.date.strftime("%A, %b %d") %></i> <%= booking.start_time.strftime("%l:%M %p") %> ~ <%= booking.end_time.strftime("%l:%M %p") %></p>
+                <p><i class="fas fa-user-alt"></i> <%= booking.user.full_name %></p>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+        <hr/>
+        <p><strong>I have booked others for:</strong></p>
+        <% @user.bookings.each do |booking| %>
+          <%= link_to  booking_path(booking) do %>
             <div class="card">
               <div class="d-flex align-items-center">
                 <h5><%= booking.skill.name %></h5>
@@ -37,22 +54,9 @@
               </div>
               <hr/>
               <p><i class="far fa-calendar-alt"></i> <%= booking.date.strftime("%A, %b %d") %></i> <%= booking.start_time.strftime("%l:%M %p") %> ~ <%= booking.end_time.strftime("%l:%M %p") %></p>
-              <p><i class="fas fa-user-alt"></i> <%= booking.user.full_name %></p>
+              <p><i class="fas fa-user-alt"></i> <%= booking.skill.user.full_name %></p>
             </div>
           <% end %>
-        <% end %>
-        <hr/>
-        <p><strong>I have booked others for:</strong></p>
-        <% @user.bookings.each do |booking| %>
-          <div class="card">
-            <div class="d-flex align-items-center">
-              <h5><%= booking.skill.name %></h5>
-              <p class="status"><%= booking.status %></p>
-            </div>
-            <hr/>
-            <p><i class="far fa-calendar-alt"></i> <%= booking.date.strftime("%A, %b %d") %></i> <%= booking.start_time.strftime("%l:%M %p") %> ~ <%= booking.end_time.strftime("%l:%M %p") %></p>
-            <p><i class="fas fa-user-alt"></i> <%= booking.skill.user.full_name %></p>
-          </div>
         <% end %>
       </div>
     </div>
