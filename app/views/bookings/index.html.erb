@@ -31,11 +31,13 @@
         <% @user.skills.each do |skill| %>
           <% skill.bookings.each do |booking| %>
             <div class="card">
-              <p><i class="far fa-calendar-alt"></i> <%= booking.date.strftime("%A, %b %d") %></p>
-              <p><i class="far fa-clock"></i> <%= booking.start_time.strftime("%l:%M %p") %> ~ <%= booking.end_time.strftime("%l:%M %p") %></p>
-              <p><i class="fas fa-user-alt"></i> <%= booking.user.first_name %> <%= booking.user.second_name %></p>
-              <p><i class="fas fa-flag"></i>  <%= booking.skill.name %></p>
-              <p><i class="far fa-check-square"></i> <%= booking.status %></p>
+              <div class="d-flex align-items-center">
+                <h5><%= booking.skill.name %></h5>
+                <p class="status"><%= booking.status %></p>
+              </div>
+              <hr/>
+              <p><i class="far fa-calendar-alt"></i> <%= booking.date.strftime("%A, %b %d") %></i> <%= booking.start_time.strftime("%l:%M %p") %> ~ <%= booking.end_time.strftime("%l:%M %p") %></p>
+              <p><i class="fas fa-user-alt"></i> <%= booking.user.full_name %></p>
             </div>
           <% end %>
         <% end %>
@@ -43,11 +45,13 @@
         <p><strong>I have booked others for:</strong></p>
         <% @user.bookings.each do |booking| %>
           <div class="card">
-            <p><i class="far fa-calendar-alt"></i> <%= booking.date.strftime("%A, %b %d") %></p>
-            <p><i class="far fa-clock"></i> <%= booking.start_time.strftime("%l:%M %p") %> ~ <%= booking.end_time.strftime("%l:%M %p") %></p>
-            <p><i class="fas fa-user-alt"></i> <%= booking.skill.user.first_name %> <%= booking.skill.user.second_name %></p>
-            <p><i class="fas fa-flag"></i>  <%= booking.skill.name %></p>
-            <p><i class="far fa-check-square"></i> <%= booking.status %></p>
+            <div class="d-flex align-items-center">
+              <h5><%= booking.skill.name %></h5>
+              <p class="status"><%= booking.status %></p>
+            </div>
+            <hr/>
+            <p><i class="far fa-calendar-alt"></i> <%= booking.date.strftime("%A, %b %d") %></i> <%= booking.start_time.strftime("%l:%M %p") %> ~ <%= booking.end_time.strftime("%l:%M %p") %></p>
+            <p><i class="fas fa-user-alt"></i> <%= booking.skill.user.full_name %></p>
           </div>
         <% end %>
       </div>
