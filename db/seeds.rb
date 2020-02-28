@@ -105,7 +105,27 @@ PROVIDERS = []
 BOOKERS = []
 PSKILLS = []
 
-10.times do
+PHOTOS_URLS= [ "https://avatars0.githubusercontent.com/u/21108437?s=400&v=4",
+  "https://avatars0.githubusercontent.com/u/25542223?s=400&v=4",
+  "https://avatars1.githubusercontent.com/u/56534210?s=400&v=4",
+  "https://avatars0.githubusercontent.com/u/35246097?s=400&v=4",
+  "https://avatars3.githubusercontent.com/u/42826652?s=400&v=4",
+  "https://avatars3.githubusercontent.com/u/47935870?s=400&v=4",
+  "https://avatars3.githubusercontent.com/u/31160338?s=400&v=4",
+  "https://avatars0.githubusercontent.com/u/6465116?s=400&v=4",
+  "https://avatars1.githubusercontent.com/u/26819547?s=400&v=4"
+  ]
+
+PHOTOS_URLS_2 = [ "https://avatars0.githubusercontent.com/u/59479470?s=400&v=4",
+  "https://avatars0.githubusercontent.com/u/58677059?s=400&v=4",
+  "https://avatars0.githubusercontent.com/u/59574812?s=400&v=4",
+  "https://avatars3.githubusercontent.com/u/58992961?s=400&v=4",
+  "https://avatars0.githubusercontent.com/u/40887017?s=400&v=4",
+  "https://avatars0.githubusercontent.com/u/58676941?s=400&v=4"
+]
+
+PHOTOS_URLS.each do |url|
+
   provider = User.create!(
     email: Faker::Internet.email,
     password: "123123",
@@ -115,10 +135,9 @@ PSKILLS = []
     bio: Faker::TvShows::SiliconValley.quote
     )
 
-  url = URI.open(open('http://le-wagon-tokyo.herokuapp.com/batches/363/student').read)
-  provider.photo.attach(io: url, filename: 'provider.jpg', content_type: 'image/jpg')
+  file = URI.open(url)
+  provider.photo.attach(io: file, filename: 'provider.jpg', content_type: 'image/jpg')
 
-  p url
 
   PROVIDERS << provider
 
@@ -148,7 +167,8 @@ PSKILLS = []
     )
 end
 
-10.times do
+PHOTOS_URLS_2.each do |url|
+
   booker = User.create!(
     email: Faker::Internet.email,
     password: "123123",
@@ -158,10 +178,8 @@ end
     bio: Faker::TvShows::SiliconValley.quote
     )
 
-  url = URI.open(open('http://le-wagon-tokyo.herokuapp.com/batches/363/student').read)
-  booker.photo.attach(io: url, filename: 'booker.jpg', content_type: 'image/jpg')
-
-  p url
+  file = URI.open(url)
+  booker.photo.attach(io: file, filename: 'booker.jpg', content_type: 'image/jpg')
 
   BOOKERS << booker
 
