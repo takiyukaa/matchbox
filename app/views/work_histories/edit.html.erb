@@ -3,9 +3,12 @@
   <div class ="row justify-content-center">
     <div class="col-xs-12, col-sm-10 col-lg-6">
       <div class="card">
-      <h1>Add a new skill</h1>
-        <%= simple_form_for(@skill) do |f| %>
-          <%= f.input :name, :label => "Skill name" %>
+      <h2>Edit work history</h2>
+        <%= simple_form_for(@workhistory) do |f| %>
+          <%= f.input :company_name %>
+          <%= f.input :job_title %>
+          <%= f.input :start_date, as: :string, input_html: {type: :date} %>
+          <%= f.input :end_date, as: :string, input_html: {type: :date} %>
           <%= f.input :description %>
           <%= f.button :submit, class: "btn-primary" %> <%= link_to "Cancel", :back, {:class=>"btn btn-secondary"} %>
         <% end %>

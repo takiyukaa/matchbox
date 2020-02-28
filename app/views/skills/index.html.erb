@@ -1,15 +1,33 @@
 <%= render 'shared/navbar' %>
-<h2>Search result</h2>
 
-<% @skills.each do |skill| %>
-  <div class="col-12 col-md-6 col-lg-4">
-    <div class="card-profile">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-      <div class="card-profile-infos">
-          <h2><%= skill.user.first_name %></h2>
-          <p><%= skill.user.city %></p>
-          <p><%= skill.description %></p>
-      </div>
+<div class="main-container">
+  <% if @skills.count == 1 %>
+    <h4>Found <%= @skills.count %> result:</h4>
+  <% else %>
+    <h4>Found <%= @skills.count %> results:</h4>
+  <% end %>
+
+    <div class ="row">
+        <% @skills.each do |skill| %>
+          <div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-4">
+
+            <%= link_to user_path(skill.user) do %>
+            <% if skill.user.photo.attached? %>
+              <% @path = skill.user.photo.key %>
+            <% else %>
+              <% @path = 'profile_whubsg' %>
+            <% end %>
+              <div class="card-profile">
+                <%= cl_image_tag(@path, crop:"fill", format:"png") %>
+                  <div class="card-profile-infos">
+                      <h2><%= skill.name %></h2>
+                      <p><%= skill.user.full_name %></p>
+                      <p><%= skill.user.city %></p>
+                      <p><%= skill.description %></p>
+                  </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
     </div>
-  </div>
-<% end %>
+</div>
