@@ -10,8 +10,8 @@
       <div class="container">
         <div class="row justify-content-between">
           <h4>Your booking details</h4>
-          <%= link_to bookings_path(current_user) do %>
-            <button class="btn btn-primary rounded">Cancel</button>
+          <button class='btn btn-primary rounded' id='cancel-booking'>Cancel</button>
+          <%= link_to user_booking_path(current_user, @booking, booking: { status: "rejected"}), remote: true, method: :patch, id: 'cancel-booking-confirmed' do %>
           <% end %>
         </div>
       </div>

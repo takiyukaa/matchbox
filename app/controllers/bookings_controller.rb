@@ -24,6 +24,15 @@ class BookingsController < ApplicationController
     end
   end
 
+  def update
+    @booking = Booking.find(params[:id])
+    if @booking.update(booking_params)
+      respond_to do | format |
+        format.js redirect_to bookings_path(current_user)
+      end
+    end
+  end
+
   def show
     @booking = Booking.find(params[:id])
     @user = @booking.skill.user
@@ -36,6 +45,7 @@ class BookingsController < ApplicationController
                   :start_time,
                   :end_time,
                   :user_comment,
-                  :skill_id)
+                  :skill_id,
+                  :status)
   end
 end
