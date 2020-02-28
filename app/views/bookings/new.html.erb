@@ -1,10 +1,11 @@
 <%= render 'shared/navbar' %>
 
+
 <div class="main-container">
   <div class ="row justify-content-center">
     <div class="col-xs-12, col-sm-10 col-lg-6">
       <div class="card">
-        <h1>Reqest a Booking with <%= @user.first_name %></h1>
+        <h1>Request a Booking with <%= @user.first_name %></h1>
 
           <%= simple_form_for [@user, @booking] do |f| %>
 
