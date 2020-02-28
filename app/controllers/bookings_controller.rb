@@ -15,16 +15,22 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
+    @user = @booking.skill.user
     if @booking.save
-      redirect_to bookings_path
+      redirect_to user_booking_path(@user, @booking)
       authorize @booking
     else
       render :new
     end
   end
 
-  def booking_params
+  def show
+    @booking = Booking.find(params[:id])
+    @user = @booking.skill.user
+     authorize @booking
+  end
 
+  def booking_params
     params.require(:booking)
           .permit(:date,
                   :start_time,
@@ -32,5 +38,4 @@ class BookingsController < ApplicationController
                   :user_comment,
                   :skill_id)
   end
-
 end
