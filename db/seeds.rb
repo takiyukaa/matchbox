@@ -26,7 +26,7 @@ HIRO = User.create!(
   bio: "I worked as finance/sales roles in a video game industry for several years but wanted to drastically change my career and so have decided to join Le Wagon. My goal here is to learn coding skills to develop web services/apps on my own."
 )
 
-hirofile = URI.open('https://res.cloudinary.com/dopoqpdhm/image/upload/v1582854043/hiro.jpg')
+hirofile = URI.open('https://res.cloudinary.com/dopoqpdhm/image/upload/v1582878062/58256225_ng2vhf.jpg')
 HIRO.photo.attach(io: hirofile, filename: 'hiro.jpg', content_type: 'image/jpg')
 
 YUKA = User.create!(
@@ -39,7 +39,7 @@ YUKA = User.create!(
 I would like to learn coding and hope to come back to the ground."
 )
 
-yukafile = URI.open('https://res.cloudinary.com/dopoqpdhm/image/upload/v1582854470/yuka.jpg')
+yukafile = URI.open('https://res.cloudinary.com/dopoqpdhm/image/upload/v1582878004/avatar_hxbgr5.jpg')
 YUKA.photo.attach(io: yukafile, filename: 'yuka.jpg', content_type: 'image/jpg')
 
 
