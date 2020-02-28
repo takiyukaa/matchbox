@@ -26,9 +26,11 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
+    authorize @booking
     if @booking.update(booking_params)
       respond_to do | format |
-        format.js redirect_to bookings_path(current_user)
+        format.js
+        format.html { redirect_to bookings_path }
       end
     end
   end
