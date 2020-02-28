@@ -11,159 +11,213 @@ User.destroy_all
 
 puts "Creating seeds"
 
+
+START_TIME = Faker::Time.forward(days: 10, period: :morning)
+
+
+# creating test owners and bookers
+
+HIRO = User.create!(
+  email: "hiro@gmail.com",
+  password: "123123",
+  first_name: "Hiroki",
+  second_name: "Kameyama",
+  city: "Tokyo",
+  bio: "I worked as finance/sales roles in a video game industry for several years but wanted to drastically change my career and so have decided to join Le Wagon. My goal here is to learn coding skills to develop web services/apps on my own."
+)
+
+hirofile = URI.open('https://res.cloudinary.com/dopoqpdhm/image/upload/v1582854043/hiro.jpg')
+HIRO.photo.attach(io: hirofile, filename: 'hiro.jpg', content_type: 'image/jpg')
+
+YUKA = User.create!(
+  email: "yuka@gmail.com",
+  password: "123123",
+  first_name: "Yuka",
+  second_name: "Takiyama",
+  city: "Tokyo",
+  bio: "I work as a flight attendant. I worked in the service industry all the time, but I wanted to get the skill.
+I would like to learn coding and hope to come back to the ground."
+)
+
+yukafile = URI.open('https://res.cloudinary.com/dopoqpdhm/image/upload/v1582854470/yuka.jpg')
+YUKA.photo.attach(io: yukafile, filename: 'yuka.jpg', content_type: 'image/jpg')
+
+
+#Creating test skills
+
+
+accounting = Skill.create!(
+  name: "Accounting",
+  description: "Realigned financial reporting processes for client company, ensuring their first on-time submission of federal tax documents in four years and laying strong groundwork for future audit-free filings.",
+  user: HIRO
+  )
+
+skills = [{
+  name: "Budgeting",
+  description: "Achieved budget reduction of approximately ten percent through improved IT expenditures and support, reductions in consultant contracts and unnecessary travel expenditures.",
+  user: HIRO
+},
+{
+  name: "CSS",
+  description: "Created 15+ websites using CSS, HTML, ASP, ASP.net, PHP, and JavaScript, from design to delivery",
+  user: YUKA
+},
+{
+  name: "Java Script",
+  description: "Converted designs in Photoshop to responsive web pages using HTML5, CSS, Javascript and jQuery.",
+  user: YUKA
+},
+{
+  name: "Ruby on rails",
+  description: "Developed an application as a full-stack web developer using AngularJS, Firebase, Node.js, D3.js, HTML/CSS",
+  user: YUKA
+}
+]
+
+Skill.create!(skills)
+
+
+#creating test work histroy
+
+WorkHistory.create!(
+    company_name: "Nintendo",
+    description: "I worked as finance/sales roles.",
+    start_date: Date.today - rand(100..10000),
+    end_date: Date.today - rand(99),
+    job_title: "Assistant Manager",
+    user: HIRO
+)
+
+WorkHistory.create!(
+  company_name: "Lufthansa",
+  description: "I fly between Japan and Germany",
+  start_date: Date.today - rand(100..10000),
+  end_date: Date.today - rand(99),
+  job_title: "Flight Attendant",
+  user: YUKA
+)
+
+
+#creating random users
+
+SKILL_NAMES = ["CSS" "Java Script", "Accounting", "Budgeting"]
 PROVIDERS = []
 BOOKERS = []
 PSKILLS = []
 
-START_TIME = Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
-
-yann = User.create!(
-  email: "yann@gmail.com",
-  password: "123123",
-  first_name: "Yann",
-  second_name: "Klein",
-  city: "Tokyo",
-  bio: "Curiosity, creativity and people empowerment are the 3 things I value the most.
-I combined them to develop embedded systems in Asia, to lead software projects and innovation for a global company and to develop a VR startup in Canada.
-I use the best of these values today to help people reach their dream future at Le Wagon Kyoto."
-)
-
-yannfile = URI.open('https://res.cloudinary.com/dopoqpdhm/image/upload/v1582690628/26819547_rc5vof.jpg')
-yann.photo.attach(io: yannfile, filename: '26819547_rc5vof.jpg', content_type: 'image/jpg')
-
-doug = User.create!(
-  email: "doug@gmail.com",
-  password: "123123",
-  first_name: "Douglas",
-  second_name: "Berkley",
-  city: "Tokyo",
-  bio: "A web developer and director at Le Wagon Japan"
-)
-
-dougfile = URI.open('https://res.cloudinary.com/dopoqpdhm/image/upload/v1582690553/25542223_wgch37.jpg')
-doug.photo.attach(io: dougfile, filename: 'doug.jpg', content_type: 'image/jpg')
-
-css = Skill.create!(
-  name: "CSS",
-  description: "Cool for that",
-  user: yann
-)
-
-java = Skill.create!(
-  name: "Java Script",
-  description: "1. Select a element, 2. Listen to an event, 3. change DOM",
-  user: yann
-)
-
-ruby = Skill.create!(
-  name: "Ruby",
-  description: "Flash card is super important",
-  user: doug
-)
-
-WorkHistory.create!(
-    company_name: "Le wagon",
-    description: "the driver for part-time bootcamp.",
-    start_date: Date.today - rand(100..10000),
-    end_date: Date.today + rand(100..10000),
-    job_title: "Driver",
-    user: yann
-)
-
-WorkHistory.create!(
-  company_name: "Le wagon",
-  description: "A web developer and director at Le Wagon Japan",
-  start_date: Date.today - rand(100..10000),
-  end_date: Date.today + rand(100..10000),
-  job_title: "Driver",
-  user: doug
-)
-
-Booking.create!(
-  date: Date.today - rand(1..10),
-  start_time: START_TIME,
-  end_time: START_TIME + rand(1..2).hours,
-  status: ['accepted', 'rejected', 'pending'].sample,
-  skill: ruby,
-  user: yann,
-  user_comment: Faker::TvShows::Simpsons.quote,
-  provider_comment: Faker::TvShows::Simpsons.quote
-)
-
-Booking.create!(
-  date: Date.today - rand(1..10),
-  start_time: START_TIME,
-  end_time: START_TIME + rand(1..2).hours,
-  status: ['accepted', 'rejected', 'pending'].sample,
-  skill: css,
-  user: doug,
-  user_comment: Faker::TvShows::Simpsons.quote,
-  provider_comment: Faker::TvShows::Simpsons.quote
-)
-
-
-
-
-3.times do
-  user = User.create!(
+10.times do
+  provider = User.create!(
     email: Faker::Internet.email,
     password: "123123",
     first_name: Faker::Name.first_name,
     second_name: Faker::Name.last_name,
     city: Faker::Address.city,
-    bio: Faker::Hipster.paragraphs
+    bio: Faker::TvShows::SiliconValley.quote
     )
-  PROVIDERS << user
 
+  url = URI.open(open('http://le-wagon-tokyo.herokuapp.com/batches/363/student').read)
+  provider.photo.attach(io: url, filename: 'provider.jpg', content_type: 'image/jpg')
+
+  p url
+
+  PROVIDERS << provider
 
   skill = Skill.create!(
-    name: Faker::Educator.degree,
-    description: Faker::TvShows::TheFreshPrinceOfBelAir.quote,
-    user: user
+    name: "Ruby on rails",
+    description: Faker::TvShows::SiliconValley.motto,
+    user: provider
     )
+
+  PSKILLS << skill
+
+  skill = Skill.create!(
+    name: SKILL_NAMES.sample,
+    description: Faker::TvShows::SiliconValley.motto,
+    user: provider
+    )
+
   PSKILLS << skill
 
   WorkHistory.create!(
     company_name: Faker::Company.name,
     description: Faker::Movies::HarryPotter.quote,
     start_date: Date.today - rand(100..10000),
-    end_date: Date.today + rand(100..10000),
+    end_date: Date.today - rand(99),
     job_title: Faker::Job.title,
-    user: user
+    user: provider
     )
 end
 
-3.times do
-  user = User.create!(
+10.times do
+  booker = User.create!(
     email: Faker::Internet.email,
     password: "123123",
     first_name: Faker::Name.first_name,
     second_name: Faker::Name.last_name,
     city: Faker::Address.city,
-    bio: Faker::Hipster.paragraphs
+    bio: Faker::TvShows::SiliconValley.quote
     )
-  BOOKERS << user
 
+  url = URI.open(open('http://le-wagon-tokyo.herokuapp.com/batches/363/student').read)
+  booker.photo.attach(io: url, filename: 'booker.jpg', content_type: 'image/jpg')
+
+  p url
+
+  BOOKERS << booker
 
   Skill.create!(
-    name: Faker::Educator.degree,
-    description: Faker::TvShows::TheFreshPrinceOfBelAir.quote,
-    user: user
-    )
+    name: "Ruby on rails",
+    description: Faker::TvShows::SiliconValley.motto,
+    user: booker
+  )
+
+  Skill.create!(
+    name: SKILL_NAMES.sample,
+    description: Faker::TvShows::SiliconValley.motto,
+    user: booker
+  )
 
   WorkHistory.create!(
     company_name: Faker::Company.name,
     description: Faker::Movies::HarryPotter.quote,
     start_date: Date.today - rand(100..10000),
-    end_date: Date.today + rand(100..10000),
+    end_date: Date.today - rand(99),
     job_title: Faker::Job.title,
-    user: user
+    user: booker
     )
 end
 
-3.times do
+
+# Creating test booking of HIRO as a provider
+
+
+Booking.create!(
+  date: Date.today + 1,
+  start_time: START_TIME,
+  end_time: START_TIME + rand(1..2).hours,
+  status: 'accepted',
+  skill: accounting,
+  user: PROVIDERS.sample,
+  user_comment: "I was looking for a person who has a experience of accounting in game industry.",
+  provider_comment: "I'm glad to help for that."
+)
+
+Booking.create!(
+  date: Date.today + 1,
+  start_time: START_TIME,
+  end_time: START_TIME + rand(1..2).hours,
+  status: 'accepted',
+  skill: PSKILLS.sample,
+  user: YUKA,
+  user_comment: "I'm looking forward to seeing you",
+  provider_comment: "Me too!"
+)
+
+
+
+40.times do
   Booking.create!(
-    date: Date.today - rand(1..10),
+    date: Date.today + rand(1..10),
     start_time: START_TIME,
     end_time: START_TIME + rand(1..2).hours,
     status: ['accepted', 'rejected', 'pending'].sample,

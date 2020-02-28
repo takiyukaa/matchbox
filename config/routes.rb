@@ -5,9 +5,11 @@ Rails.application.routes.draw do
 
   resources :bookings, only: [:index]
   resources :work_histories, only: [:new, :create, :edit, :update, :destroy]
+  
   resources :users, only: [:show] do
-    resources :bookings, only: [:new, :create]
+    resources :bookings, only: [:new, :create, :show]
   end
 
   resources :skills, only: [:index, :new, :create, :edit, :update, :destroy]
+
 end
